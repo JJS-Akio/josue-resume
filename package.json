@@ -14,8 +14,11 @@
     "publish": true
   },
   "dependencies": {
+    "@huggingface/transformers": "^3.7.6",
     "@opennextjs/cloudflare": "1.3.0",
+    "mammoth": "^1.11.0",
     "next": "15.3.3",
+    "pdfjs-dist": "^5.4.394",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
