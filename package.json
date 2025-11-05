@@ -2,6 +2,7 @@
   "name": "josue-resume",
   "description": "Build a full-stack web application with Next.js.",
   "private": true,
+  "packageManager": "pnpm@9.11.0",
   "cloudflare": {
     "label": "Next.js Framework Starter",
     "products": [
@@ -33,7 +34,7 @@
   "scripts": {
     "build": "next build",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
-    "check": "npm run build && tsc",
+    "check": "pnpm run build && tsc",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "dev": "next dev",
     "lint": "next lint",

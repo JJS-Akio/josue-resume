@@ -20,22 +20,16 @@ A live public deployment of this template is available at [https://next-starter-
 
 ## Getting Started
 
-First, run:
+First, install dependencies with [pnpm](https://pnpm.io/):
 
 ```bash
-npm install
-# or
-yarn install
-# or
 pnpm install
-# or
-bun install
 ```
 
-Then run the development server (using the package manager of your choice):
+Then run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -48,10 +42,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 | Command                           | Action                                       |
 | :-------------------------------- | :------------------------------------------- |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
-| `npm wrangler tail`               | View real-time logs for all Workers          |
+| `pnpm run build`                   | Build your production site                   |
+| `pnpm run preview`                 | Preview your build locally, before deploying |
+| `pnpm run build && pnpm run deploy` | Deploy your production site to Cloudflare    |
+| `pnpm wrangler tail`               | View real-time logs for all Workers          |
 
 ## Learn More
 
