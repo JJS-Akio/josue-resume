@@ -7330,3 +7330,21 @@ declare abstract class WorkflowInstance {
         payload: unknown;
     }): Promise<void>;
 }
+
+declare module "mammoth/mammoth.browser" {
+  export function extractRawText(options: {
+    arrayBuffer: ArrayBuffer;
+  }): Promise<{
+    value: string;
+    messages: unknown[];
+  }>;
+}
+
+declare module "pdfjs-dist/build/pdf.worker.min.js?url" {
+  const workerSrc: string;
+  export default workerSrc;
+}
+
+declare module "/pdf.min.mjs" {
+  export * from "pdfjs-dist";
+}
