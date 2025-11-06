@@ -65,11 +65,16 @@ export default function RagExamplePage() {
     [searchInput]
   );
 
+  const normalizedTokensKey = useMemo(
+    () => normalizedSearchTokens.join("|"),
+    [normalizedSearchTokens]
+  );
+
   const searchTokens = useMemo(() => parseTokens(searchInput), [searchInput]);
 
   useEffect(() => {
     setExpandedChunks({});
-  }, [normalizedSearchTokens.join("|")]);
+  }, [normalizedTokensKey]);
 
   const filteredChunks = useMemo(() => {
     return vectors

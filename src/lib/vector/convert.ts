@@ -1,5 +1,29 @@
 import { convertTextToEmbedding, TextToVectorDTO } from "./vector-service";
 
+type PdfPageProxy = {
+  getTextContent: () => Promise<{
+    items: Array<{ str?: string }>;
+  }>;
+};
+
+type PdfDocumentProxy = {
+  numPages: number;
+  getPage: (pageNumber: number) => Promise<PdfPageProxy>;
+  destroy: () => void;
+};
+
+type PdfLoadingTask = {
+  promise: Promise<PdfDocumentProxy>;
+  destroy: () => void;
+};
+
+type PdfJsModule = {
+  GlobalWorkerOptions?: {
+    workerSrc: string;
+  };
+  getDocument: (params: { data: Uint8Array }) => PdfLoadingTask;
+};
+
 export async function convertFileToEmbeddings(
   file: File
 ): Promise<TextToVectorDTO[]> {
@@ -72,7 +96,7 @@ async function extractPdfText(file: File): Promise<string> {
   const pdfjs = (await import(
     /* webpackIgnore: true */
     pdfModuleUrl
-  )) as any;
+  )) as PdfJsModule;
   if (typeof pdfjs.GlobalWorkerOptions !== "undefined") {
     pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
   }
