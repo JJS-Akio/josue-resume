@@ -2,10 +2,10 @@ export default function Home() {
   return (
     <section className="flex flex-col gap-10">
       <div className="space-y-4">
-        <h1 className="text-4xl font-semibold text-white sm:text-5xl">
+        <h1 className="text-4xl font-semibold text-slate-900 sm:text-5xl">
           Build private-first RAG demos.
         </h1>
-        <p className="max-w-3xl text-base text-slate-300 sm:text-lg">
+        <p className="max-w-3xl text-base text-slate-600 sm:text-lg">
           This playground keeps every file in-memory so you can experiment with
           embeddings without sharing data with a backend. Start with the RAG
           example to see how uploads turn into embeddings you can inspect.
@@ -17,34 +17,34 @@ export default function Home() {
           >
             Open the RAG example
           </a>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600">
             Upload PDFs, DOCX, or plain text files and inspect the chunks.
           </p>
         </div>
       </div>
 
-      <div className="grid gap-6 rounded-3xl border border-slate-800 bg-slate-900/40 p-8 text-sm text-slate-300 sm:grid-cols-2">
+      <div className="grid gap-6 rounded-3xl border border-zinc-200 bg-[#FAFAFA] p-8 text-sm text-slate-700 sm:grid-cols-2">
         <div className="space-y-3">
-          <h2 className="text-lg font-medium text-white">
+          <h2 className="text-lg font-medium text-slate-900">
             How this repo is structured
           </h2>
           <ul className="space-y-2">
             <li>
-              <span className="font-semibold text-indigo-300">FE only:</span>{" "}
+              <span className="font-semibold text-indigo-600">FE only:</span>{" "}
               all extraction and embedding work happens in the browser.
             </li>
             <li>
-              <span className="font-semibold text-indigo-300">No storage:</span>{" "}
+              <span className="font-semibold text-indigo-600">No storage:</span>{" "}
               refresh the tab to flush everything from memory.
             </li>
             <li>
-              <span className="font-semibold text-indigo-300">Extendable:</span>{" "}
+              <span className="font-semibold text-indigo-600">Extendable:</span>{" "}
               add your own similarity search or vector store integrations later.
             </li>
           </ul>
         </div>
         <div className="space-y-3">
-          <h2 className="text-lg font-medium text-white">Next steps</h2>
+          <h2 className="text-lg font-medium text-slate-900">Next steps</h2>
           <ol className="list-decimal space-y-2 pl-5">
             <li>Open the RAG example and upload a supported file.</li>
             <li>Inspect the generated chunks and embedding previews.</li>

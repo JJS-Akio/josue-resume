@@ -26,27 +26,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#E4E4E7] text-slate-900`}
       >
         <div className="flex min-h-screen flex-col">
-          <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-            <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
+          <header className="border-b border-zinc-300 bg-[#E4E4E7] backdrop-blur">
+            <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 text-slate-800">
               <Link
                 href="/"
-                className="text-lg font-semibold tracking-tight text-slate-100 transition hover:text-slate-300"
+                className="text-lg font-semibold tracking-tight transition hover:text-slate-600"
               >
                 Josue Navigator
               </Link>
               <nav className="flex items-center gap-2 text-sm font-medium">
                 <Link
                   href="/"
-                  className="rounded-full px-4 py-2 text-slate-200 transition hover:bg-slate-800 hover:text-white"
+                  className="rounded-full px-4 py-2 text-slate-700 transition hover:bg-white hover:text-slate-900"
                 >
                   Home
                 </Link>
                 <Link
                   href="/rag"
-                  className="rounded-full px-4 py-2 text-slate-200 transition hover:bg-indigo-600/20 hover:text-indigo-200"
+                  className="rounded-full px-4 py-2 text-slate-700 transition hover:bg-indigo-100 hover:text-indigo-700"
                 >
                   RAG Example
                 </Link>
@@ -56,7 +56,7 @@ export default function RootLayout({
           <main className="flex-1">
             <div className="mx-auto w-full max-w-5xl px-6 py-12">{children}</div>
           </main>
-          <footer className="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+          <footer className="border-t border-zinc-300 py-6 text-center text-xs text-slate-600">
             Built with Next.js, running fully in the browser for private playgrounds.
           </footer>
         </div>

@@ -271,11 +271,11 @@ export default function RagExamplePage() {
 
   return (
     <section className="flex flex-col gap-10">
-      <div className="rounded-3xl border border-indigo-500/20 bg-indigo-500/5 p-8">
-        <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+      <div className="rounded-3xl border border-zinc-200 bg-[#FAFAFA] p-8 shadow-sm">
+        <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">
           Retrieval-Augmented Generation (RAG) Playground
         </h1>
-        <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
+        <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
           Upload a supported document and we&apos;ll keep it entirely in the browser,
           split it into overlapping windows, and generate embeddings for each chunk.
           Explore how chunking, embeddings, and similarity search fit together—no backends
@@ -283,11 +283,11 @@ export default function RagExamplePage() {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-[#FAFAFA] p-6 shadow-sm">
         <div>
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-slate-700">
             Currently supported extensions:{" "}
-            <span className="font-medium text-indigo-300">{allowedList}</span>
+            <span className="font-medium text-indigo-600">{allowedList}</span>
           </p>
           <p className="mt-1 text-xs text-slate-500">
             All processing happens client-side. Refreshing clears everything.
@@ -297,7 +297,7 @@ export default function RagExamplePage() {
           <button
             type="button"
             onClick={() => setShowDialog(true)}
-            className="rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400 hover:text-white"
+            className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-400 hover:text-indigo-600"
           >
             View upload limits
           </button>
@@ -305,7 +305,7 @@ export default function RagExamplePage() {
             type="button"
             onClick={reset}
             disabled={!vectors.length && !fileName}
-            className="rounded-full bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-800/40 disabled:text-slate-500"
+            className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:bg-indigo-200 disabled:text-white/70"
           >
             Reset
           </button>
@@ -315,12 +315,12 @@ export default function RagExamplePage() {
       <label
         htmlFor="file-upload"
         className={[
-          "flex min-h-[220px] cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed transition",
+          "flex min-h-[220px] cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed bg-white text-slate-700 transition",
           isUploadDisabled
-            ? "border-slate-800 bg-slate-900/60 text-slate-500"
+            ? "border-zinc-300 bg-zinc-200 text-zinc-500"
             : isDragActive
-            ? "border-indigo-400 bg-indigo-500/10 text-indigo-200"
-            : "border-slate-700 hover:border-indigo-400 hover:bg-slate-900/40",
+            ? "border-indigo-300 bg-indigo-50 text-indigo-700"
+            : "border-zinc-400 hover:border-indigo-400 hover:bg-white",
         ].join(" ")}
         onDragOver={handleDragOver}
         onDragEnter={handleDragOver}
@@ -337,10 +337,10 @@ export default function RagExamplePage() {
           disabled={isUploadDisabled}
         />
         <div className="flex flex-col items-center gap-2 text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-700">
             {isUploadDisabled ? "Upload complete" : "Upload a document"}
           </span>
-          <p className="max-w-md text-sm text-slate-400">
+          <p className="max-w-md text-sm text-slate-600">
             {isProcessing
               ? "Processing file and generating embeddings. This can take a little while the first time."
               : vectors.length
@@ -350,7 +350,7 @@ export default function RagExamplePage() {
           {isProcessing && (
             <div className="mt-4 flex flex-col items-center gap-2">
               <span className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-indigo-400 border-t-transparent" />
-              <p className="text-xs text-indigo-200">
+              <p className="text-xs text-indigo-600">
                 {statusMessage || "Hang tight, downloading the model and generating embeddings…"}
               </p>
             </div>
@@ -361,30 +361,30 @@ export default function RagExamplePage() {
       {vectors.length > 0 && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl font-semibold text-slate-900">
               Chunk explorer
             </h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-slate-600">
               Each card shows the chunked text we generated along with a preview of
               its embedding vector. Expand a card to inspect the full embedding values.
             </p>
           </div>
-          <div className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+          <div className="space-y-4 rounded-2xl border border-zinc-200 bg-[#FAFAFA] p-5 shadow-sm">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <div className="flex flex-1 items-center gap-3 rounded-2xl border border-slate-800 bg-slate-950/60 px-4 py-3">
+              <div className="flex flex-1 items-center gap-3 rounded-2xl border border-zinc-300 bg-white px-4 py-3">
                 <input
                   type="text"
                   value={searchInput}
                   onChange={(event) => setSearchInput(event.target.value)}
                   onKeyDown={handleSearchKeyDown}
                   placeholder="Type to search chunks in real time…"
-                  className="flex-1 bg-transparent text-sm text-slate-200 outline-none placeholder:text-slate-500"
+                  className="flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400"
                 />
               </div>
               <button
                 type="button"
                 onClick={() => setSearchInput("")}
-                className="inline-flex items-center justify-center rounded-full bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-900/40 disabled:text-slate-600"
+                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
                 disabled={!searchInput.trim()}
               >
                 Clear
@@ -400,13 +400,13 @@ export default function RagExamplePage() {
                 searchTokens.map((token) => (
                   <span
                     key={token}
-                    className="flex items-center gap-2 rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-medium text-indigo-200"
+                    className="flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700"
                   >
                     {token}
                     <button
                       type="button"
                       onClick={() => handleRemoveToken(token)}
-                      className="text-indigo-200/70 transition hover:text-white"
+                      className="text-indigo-600 transition hover:text-indigo-800"
                     >
                       ×
                     </button>
@@ -415,7 +415,7 @@ export default function RagExamplePage() {
               )}
             </div>
             {totalChunks > 0 && (
-              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600">
                 <span>
                   Showing {displayCount} of {totalChunks} chunk
                   {totalChunks === 1 ? "" : "s"}
@@ -431,11 +431,11 @@ export default function RagExamplePage() {
                         type="button"
                         onClick={() => setVisibleCount(option)}
                         className={[
-                          "rounded-full px-3 py-1 text-xs font-semibold transition",
+                          "rounded-full border px-3 py-1 text-xs font-semibold transition",
                           visibleCount === option ||
                           (option === totalChunks && visibleCount === totalChunks)
-                            ? "bg-indigo-600 text-white"
-                            : "bg-slate-950/60 text-slate-300 hover:bg-slate-800",
+                            ? "border-indigo-600 bg-indigo-600 text-white"
+                            : "border-zinc-200 bg-white text-slate-700 hover:border-indigo-200",
                         ].join(" ")}
                       >
                         {option === totalChunks ? `All (${totalChunks})` : option}
@@ -447,7 +447,7 @@ export default function RagExamplePage() {
             )}
           </div>
           {filteredChunks.length === 0 ? (
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-8 text-center text-sm text-slate-400">
+            <div className="rounded-3xl border border-zinc-200 bg-[#FAFAFA] p-8 text-center text-sm text-slate-600">
               No chunks match your search terms. Try different keywords or reset the
               filters.
             </div>
@@ -477,10 +477,10 @@ export default function RagExamplePage() {
                 return (
                   <article
                     key={`${chunkId}-${index}`}
-                    className="flex h-full flex-col rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-sm shadow-slate-950/50"
+                    className="flex h-full flex-col rounded-3xl border border-zinc-200 bg-[#FAFAFA] p-6 shadow-sm shadow-zinc-300/60"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-300">
+                      <span className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-600">
                         Chunk {originalIndex + 1}
                       </span>
                       <span className="text-xs text-slate-500">
@@ -489,12 +489,12 @@ export default function RagExamplePage() {
                     </div>
                     <div className="mt-4 flex-1 space-y-3">
                       <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-semibold text-white">
+                        <h3 className="text-sm font-semibold text-slate-900">
                           Source text
                         </h3>
                         <div className="flex items-center gap-2">
                           {matchCount > 0 && (
-                            <span className="rounded-full bg-indigo-500/20 px-2 py-1 text-xs font-medium text-indigo-200">
+                            <span className="rounded-full bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700">
                               {matchCount} hit{matchCount === 1 ? "" : "s"}
                             </span>
                           )}
@@ -506,7 +506,7 @@ export default function RagExamplePage() {
                                 [chunkId]: !isExpanded,
                               }))
                             }
-                            className="text-xs font-medium text-indigo-300 transition hover:text-indigo-100"
+                            className="text-xs font-medium text-indigo-600 transition hover:text-indigo-800"
                           >
                             {isExpanded ? "Collapse" : "Expand"}
                           </button>
@@ -521,7 +521,7 @@ export default function RagExamplePage() {
                           }
                         }}
                         className={[
-                          "rounded-2xl bg-slate-950/60 p-4 text-sm leading-6 text-slate-300 whitespace-pre-wrap",
+                          "rounded-2xl border border-zinc-100 bg-white p-4 text-sm leading-6 text-slate-700 whitespace-pre-wrap",
                           isExpanded
                             ? "max-h-96 overflow-y-auto"
                             : "max-h-48 overflow-y-auto",
@@ -530,17 +530,17 @@ export default function RagExamplePage() {
                         {highlightedText}
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-white">
+                        <h4 className="text-sm font-semibold text-slate-900">
                           Embedding preview
                         </h4>
-                        <p className="rounded-2xl bg-slate-950/60 p-3 text-xs text-slate-300">
+                        <p className="rounded-2xl border border-zinc-100 bg-white p-3 text-xs text-slate-700">
                           {preview || "—"}
                         </p>
-                        <details className="group rounded-2xl border border-slate-800 bg-slate-950/40 p-3 text-xs text-slate-300">
-                          <summary className="cursor-pointer list-none font-medium text-indigo-200 transition group-open:text-indigo-100">
+                        <details className="group rounded-2xl border border-zinc-200 bg-white p-3 text-xs text-slate-700">
+                          <summary className="cursor-pointer list-none font-medium text-indigo-700 transition group-open:text-indigo-900">
                             View complete vector
                           </summary>
-                          <pre className="mt-3 max-h-48 overflow-y-auto whitespace-pre-wrap break-words text-[11px] text-slate-300">
+                          <pre className="mt-3 max-h-48 overflow-y-auto whitespace-pre-wrap break-words text-[11px] text-slate-700">
                             {fullVector}
                           </pre>
                         </details>
@@ -565,7 +565,7 @@ export default function RagExamplePage() {
                     setVisibleCount(totalChunks);
                   }
                 }}
-                className="rounded-full border border-indigo-500/40 px-5 py-2 text-sm font-semibold text-indigo-200 transition hover:border-indigo-400 hover:text-white"
+                className="rounded-full border border-zinc-300 bg-white px-5 py-2 text-sm font-semibold text-indigo-700 transition hover:border-indigo-400 hover:text-indigo-900"
               >
                 Show more
               </button>
@@ -575,12 +575,12 @@ export default function RagExamplePage() {
       )}
 
       {showDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 px-4">
-          <div className="w-full max-w-md rounded-3xl border border-slate-800 bg-slate-950 p-6 shadow-lg shadow-black/50">
-            <h2 className="text-lg font-semibold text-white">Upload requirements</h2>
-            <p className="mt-3 text-sm text-slate-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 px-4">
+          <div className="w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-lg shadow-black/20">
+            <h2 className="text-lg font-semibold text-slate-900">Upload requirements</h2>
+            <p className="mt-3 text-sm text-slate-600">
               We currently accept the following file types:{" "}
-              <span className="font-medium text-indigo-300">{allowedList}</span>.
+              <span className="font-medium text-indigo-600">{allowedList}</span>.
               Everything stays in-memory—closing or refreshing the page clears all data.
             </p>
             <p className="mt-3 text-xs text-slate-500">
@@ -605,7 +605,7 @@ export default function RagExamplePage() {
             "fixed bottom-6 right-6 z-50 flex items-start gap-3 rounded-2xl px-4 py-3 text-sm shadow-lg",
             toast.variant === "error"
               ? "bg-red-500/90 text-white"
-              : "bg-slate-800/90 text-slate-100",
+              : "bg-slate-900 text-white",
           ].join(" ")}
         >
           <span>{toast.message}</span>
@@ -669,7 +669,7 @@ function highlightMatches(
         <mark
           key={`match-${index}`}
           data-highlight="true"
-          className="rounded bg-indigo-500/40 px-1 py-0.5 text-indigo-100"
+          className="rounded bg-indigo-100 px-1 py-0.5 text-indigo-900"
         >
           {part}
         </mark>
