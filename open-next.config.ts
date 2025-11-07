@@ -9,6 +9,6 @@ const config = defineCloudflareConfig({
 });
 
 // Avoid letting OpenNext call `pnpm build`, which would invoke this adapter recursively.
-config.buildCommand = "next build";
+config.buildCommand = "pnpm run build:next";
 
 export default config;
